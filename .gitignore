@@ -1,0 +1,6 @@
+*.pyc
+codefisher/settings.py
+.project
+.pydevproject
+sqlite.db
+
