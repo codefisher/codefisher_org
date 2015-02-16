@@ -1,13 +1,10 @@
 import os
 BASE_DIR = os.path.realpath(os.path.dirname(__file__))
 
-INTERNAL_IPS = (
-    '127.0.0.1',
-)
-
 ADMINS = (
     ('Michael Buckley', 'support@codefisher.org'),
 )
+
 MANAGERS = ADMINS
 
 # Local time zone for this installation. Choices can be found here:
@@ -68,6 +65,8 @@ INSTALLED_APPS = (
     'django.contrib.redirects',
     'django.contrib.admin',
     'django.contrib.staticfiles',
+    # codefisher
+    'codefisher_site',
     # djangopress
     'djangopress.core.format',
     'djangopress.blog',
@@ -78,10 +77,10 @@ INSTALLED_APPS = (
     'djangopress.pages',
     'djangopress.forum',
     'djangopress.donate',
-    'djangopress.iptools',
     'paypal.standard',
     'paypal.standard.ipn',
     'djangopress.contact',
+    'djangopress.iptools',
 )
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
@@ -93,10 +92,6 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
 
 PAYPAL_RECEIVER_EMAIL = "paypal@codefisher.org"
 PAYPAL_TEST = False
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '..', 'www', 'static'),
-)
 
 KEEP_LOGGED_DURATION = 30*24*60*60 # about one month
 
