@@ -6,6 +6,7 @@
 {% load display_menu %}
 {% load pages_tags %}
 {% load forum_tags %}
+{% load theme %}
 
 {% block doctype %}<!DOCTYPE html>{% endblock %}
 <html>
@@ -13,18 +14,14 @@
  <meta charset="utf-8"/>
  <title>{% block page_title %}{{ title|default:"Firefox Add-ons, Code Resources and More" }}{% endblock %}{% block page_title_prefix %} :: Codefisher.org{% endblock %}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
- {% if debug %}
- <link type="text/css" rel="stylesheet" media="screen and (min-width: 600px)" href="{% get_static_prefix %}themes/default/style.css" />
- <link type="text/css" rel="stylesheet" media="handheld, screen and (max-width: 599px)" href="{% get_static_prefix %}themes/default/handheld.css" />
- <link rel="stylesheet" type="text/css" media="print" href="{% get_static_prefix %}themes/default/print.css" />
- {% else %}
- <link type="text/css" rel="stylesheet" media="screen and (min-width: 600px)" href="{% get_static_prefix %}themes/default/style.min.css" />
- <link type="text/css" rel="stylesheet" media="handheld, screen and (max-width: 599px)" href="{% get_static_prefix %}themes/default/handheld.min.css" />
- <link rel="stylesheet" type="text/css" media="print" href="{% get_static_prefix %}themes/default/print.min.css"/>
- {% endif %}
- <script type="text/javascript" src="{% get_static_prefix %}js/jquery-1.11.1.min.js"></script>
- <script type="text/javascript" src="{% get_static_prefix %}js/menu.action.js"></script>
- <script type="text/javascript" src="{% get_static_prefix %}js/quick-login.js"></script>
+ {% static "themes/" as theme_folder %}
+ <link type="text/css" rel="stylesheet" media="screen and (min-width: 600px)" href="{{theme_folder}}{% theme_folder %}/style.css" />
+ <link type="text/css" rel="stylesheet" media="handheld, screen and (max-width: 599px)" href="{{theme_folder}}{% theme_folder %}/handheld.css" />
+ <link rel="stylesheet" type="text/css" media="print" href="{{theme_folder}}{% theme_folder %}/print.css" />
+ 
+ <script type="text/javascript" src="{% static "js/jquery-2.1.1.js" %}"></script>
+ <script type="text/javascript" src="{% static "js/menu.action.js" %}"></script>
+ <script type="text/javascript" src="{% static "js/quick-login.js" %}"></script>
  <link rel="alternate" type="application/atom+xml" href="{% url 'blog-feed' blog_slug='news' %}" />
  {% block head_tags %}{{ extra_head_content|safe }}{% endblock %}
  
@@ -50,7 +47,7 @@
 <body>
 {% block page_top %}{% endblock %}
 <nav id="top-menu">
-  <a id="logo" href="/"><img width="175" height="90" src="{% get_static_prefix %}themes/default/images/logo-text.png" alt="Codefisher" /></a>
+  <a id="logo" href="/"><img width="175" height="90" src="{{theme_folder}}{% theme_folder %}/images/logo-text.png" alt="Codefisher" /></a>
  <div class="fly-out-menu css-fly-out-menu" id="links-menu">
  {% cache 600 util_menu %}
      {% display_menu 'util-menu' %}
@@ -141,7 +138,7 @@
      <form action="{% url 'haystack-search' %}" method="get" id="search">
       <div class="search-inner">
        <label for="search-box">Search:</label>
-       <div id="search-controls"><input type="text" size="14" id="search-box" name="q" /><button type="submit" id="search-go"><img src="{% get_static_prefix %}images/pastel-svg/16/magnifier.png" alt="Go" /></button></div>
+       <div id="search-controls"><input type="text" size="14" id="search-box" name="q" /><button type="submit" id="search-go"><img src="{% static "images/pastel-svg/16/magnifier.png" alt="Go" %}" /></button></div>
       </div>
      </form>
      {% endblock %}
@@ -151,14 +148,14 @@
     <h3>Top Content</h3>
     <div class="side-bar-content">
         <div class="fragment">
-        <h4><img src="{% get_static_prefix %}images/icons/toolbar-buttons.png" width="32" height="32" alt="" /><a href="/toolbar_button/">Toolbar Buttons</a></h4>
+        <h4><img src="{% static "images/icons/toolbar-buttons.png" width="32" height="32" alt="" /><a href="/toolbar_button/" %}">Toolbar Buttons</a></h4>
         <p>
           <a href="/toolbar_button/">Toolbar Buttons</a> is a button set for Firefox, Thunderbird.  It is the largest set of buttons available for these application, boasting over 100 buttons for Firefox alone
         </p>
         </div>
 
         <div class="fragment">
-        <h4><img src="{% get_static_prefix %}images/icons/pastel-svg.png" width="32" height="32" alt="" /><a href="/pastel-svg/">Pastel SVG Icons</a></h4>
+        <h4><img src="{% static "images/icons/pastel-svg.png" width="32" height="32" alt="" /><a href="/pastel-svg/" %}">Pastel SVG Icons</a></h4>
         <p>
            <a href="/pastel-svg/">Pastel SVG</a> is an icon set based on the popular silk icons found as <a href="http://famfamfam.com/">FamFamFam.com</a>. It uses the same style, so some of the icons are almost identical.  The goal of the project is to recreate the entire set in a full range of sizes while also adding many icons that we think the original set is missing.
         </p>

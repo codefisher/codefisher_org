@@ -84,3 +84,6 @@ urlpatterns += download_urls
 
 from djangopress.core.format.models import autodiscover as format_autodiscover
 format_autodiscover()
+
+from djangopress.theme.models import autodiscover as theme_autodiscover
+theme_autodiscover()

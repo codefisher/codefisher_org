@@ -3,7 +3,7 @@
 {% load pages_tags %}
 
 {% block head_tags %}
-    <link type="text/css" rel="stylesheet" href="{% get_static_prefix %}css/download.css">
+    <link type="text/css" rel="stylesheet" href="{% static "css/download.css" %}">
 {% endblock %}
 
 {% block content_adds %}
@@ -22,7 +22,7 @@
 {% block content %}
 	<div class="release_notes">
 	    <div class="right"><a href="https://twitter.com/codefisher/">
-	        <img src="{% get_static_prefix %}images/pastel-svg/16/twitter.png" alt="">
+	        <img src="{% static "images/pastel-svg/16/twitter.png" alt="" %}">
 	        Follow me on Twitter</a></div>
 	    <h2>{{ download.title }} {{ download.version }}</h2>
 	    <small>{{ download.description }}</small>
