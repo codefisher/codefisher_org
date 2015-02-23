@@ -52,10 +52,10 @@ urlpatterns = patterns('',
     (r'^ico/', include(favicon_getter_urls)),
     (r'^pastel-svg/', include(pastelsvg_urls)),
     # the Toolbar Buttons section of the site (custom maker etc.)
-    (r'^toolbar_button/request/',
-        include('tbutton_web.tbutton_votes.urls')),
-    (r'^toolbar_button/',
-        include('tbutton_web.tbutton_maker.urls')),
+    (r'^toolbar_button/request/', include('tbutton_web.tbutton_votes.urls')),
+    (r'^toolbar_button/', include('tbutton_web.tbutton.urls')),
+    (r'^toolbar_button/', include('tbutton_web.tbutton_maker.urls')),
+    (r'^toolbar_button/', include('tbutton_web.lbutton.urls')),
 )
 
 try:
