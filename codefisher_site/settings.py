@@ -64,7 +64,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.staticfiles',
     # codefisher
-    'codefisher_site',
+    'codefisher_org.codefisher_site',
     # djangopress
     'djangopress.core.format',
     'djangopress.blog',
