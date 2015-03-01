@@ -1,6 +1,10 @@
 import os
 BASE_DIR = os.path.realpath(os.path.dirname(__file__))
 
+INTERNAL_IPS = (
+    '127.0.0.1',
+)
+
 ADMINS = (
     ('Michael Buckley', 'support@codefisher.org'),
 )
@@ -95,9 +99,10 @@ ANONYMOUS_USER_GROUP = "Anonymous"
 DEFAULT_USER_GROUP = "New Member"
 
 # the icon sets to use for the buttons
-TBUTTON_ICONS = {
-    "pastel-svg": ("Pastel SVG", "../www/static/images/pastel-svg"),
-}
+#TBUTTON_ICONS = {
+#    "pastel-svg": ("Pastel SVG", "../www/static/images/pastel-svg"),
+#}
+
 TBUTTON_ICONS_SIZES = [
     "standard", "large", "jumbo",
 ]
@@ -109,7 +114,7 @@ TBUTTON_ICON_SET_SIZES = {
     },
 }
 TBUTTON_DEFAULT_ICONS = "pastel-svg"
-TBUTTON_TAGS_DIR = None
+#TBUTTON_TAGS_DIR = None
 
 import mozbutton_sdk
 
@@ -156,6 +161,6 @@ ACCOUNTS_USER_LIMITS = {
         "lines": 4,
         "length": 500,
         "images": True,
-        "links": True,         
+        "links": True,
     }
 }
