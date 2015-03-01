@@ -3,4 +3,4 @@ codefisher/settings.py
 .project
 .pydevproject
 sqlite.db
-
+codefisher/local_urls.py
