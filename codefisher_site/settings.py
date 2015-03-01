@@ -42,7 +42,7 @@ USE_L10N = False
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
-ROOT_URLCONF = 'codefisher.urls'
+ROOT_URLCONF = 'codefisher_org.codefisher.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
