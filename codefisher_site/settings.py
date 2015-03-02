@@ -116,10 +116,13 @@ TBUTTON_ICON_SET_SIZES = {
 TBUTTON_DEFAULT_ICONS = "pastel-svg"
 #TBUTTON_TAGS_DIR = None
 
-import mozbutton_sdk
+try:
+    import mozbutton_sdk
 
-MOZ_APP_NAMES = dict((ext_id, name) for name, ext_id, _, _ in
+    MOZ_APP_NAMES = dict((ext_id, name) for name, ext_id, _, _ in
         sum(mozbutton_sdk.config.settings.config.get("applications_data").values(), ()))
+except ImportError:
+    pass
 
 # the default icons to use for the link buttons
 DEFAULT_LINK_ICONS = "../www/static/images/link-icons"
