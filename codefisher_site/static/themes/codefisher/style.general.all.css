@@ -194,8 +194,10 @@ input[disabled] {
     padding-right:2em;
 }
 
-.pagination .current-link {
+.pagination .current-link a,
+.pagination .active a {
 	font-weight:bold;
+	text-decoration:none;
 }
 
 .pagination .location {
@@ -204,7 +206,12 @@ input[disabled] {
 	padding-top:0.5em;
 }
 
+.pagination li {
+	display:inline-block;
+}
+
 .pagination .range-links a,
+.pagination li a,
 .pagination .range-links .current-link {
 	display:inline-block;
 	padding:2px;
@@ -217,6 +224,7 @@ input[disabled] {
 }
 
 .pagination .range-links a:hover,
+.pagination li a:hover,
 .pagination .range-links .current-link:hover {
 	background: rgba(0, 0, 0, 0.5);
 }
