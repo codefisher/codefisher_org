@@ -117,15 +117,15 @@ TBUTTON_DEFAULT_ICONS = "pastel-svg"
 #TBUTTON_TAGS_DIR = None
 
 try:
-    import mozbutton_sdk
+    from mozbutton_sdk.config.settings import config
 
     MOZ_APP_NAMES = dict((ext_id, name) for name, ext_id, _, _ in
-        sum(mozbutton_sdk.config.settings.config.get("applications_data").values(), ()))
+        sum(config.get("applications_data").values(), ()))
 except ImportError:
-    pass
+    print("Could not import mozbutton_sdk")
 
 # the default icons to use for the link buttons
-DEFAULT_LINK_ICONS = "../www/static/images/link-icons"
+DEFAULT_LINK_ICONS = "/home/michael/WebSites/dev/codefisher/www/static/images/link-icons"
 
 INSTALLED_APPS += (
     'tbutton_web.tbutton_maker',
