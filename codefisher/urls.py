@@ -6,7 +6,6 @@ from djangopress.pages import urls as pages_urls
 from paypal.standard.ipn import urls as paypal_urls
 from djangopress.donate import urls as donate_urls
 from djangopress.contact import urls as contact_urls
-from djangopress.menus import urls as menu_urls
 from djangopress.iptools import urls as iptools_urls
 
 from codefisher_apps.downloads import urls as download_urls
@@ -76,7 +75,7 @@ except ImportError:
 from djangopress.sitemap import sitemap_patterns
 urlpatterns += sitemap_patterns
 
-from local_urls import urlpatterns as locale_urls
+from .local_urls import urlpatterns as locale_urls
 urlpatterns = locale_urls + urlpatterns
 
 from codefisher_apps.downloads.urls import urlpatterns as download_urls
