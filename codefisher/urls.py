@@ -8,6 +8,9 @@ from djangopress.donate import urls as donate_urls
 from djangopress.contact import urls as contact_urls
 from djangopress.iptools import urls as iptools_urls
 
+# this is to make the menu register code run
+import djangopress.menus.urls
+
 from codefisher_apps.downloads import urls as download_urls
 from codefisher_apps.svn_xslt import urls as svn_urls
 from codefisher_apps.favicon_getter import urls as favicon_getter_urls
