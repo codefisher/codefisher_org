@@ -83,7 +83,6 @@
 	</ul>
 	{% endif %}
    {% block general %}
-     <div id="general">
         {% block content_adds %}
             <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- Codefisher Banner -->
@@ -96,7 +95,6 @@
             (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         {% endblock %}
-
 	        {% block content %}
 	           {% if page_content %}
                     {{ page_content|safe }}
@@ -107,9 +105,7 @@
     			    </p>
     		   {% endif %}
 	        {% endblock %}
-	    </div>
     {% endblock %}
-
  </main>
  <aside id="sidebar">
   <div id="search-sidebar">
