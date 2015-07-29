@@ -75,6 +75,14 @@ try:
 except ImportError:
     pass
 
+try:
+    import tinymce
+    urlpatterns += [
+        url(r'^tinymce/', include('tinymce.urls')),
+    ]
+except ImportError:
+    pass
+
 from djangopress.sitemap import sitemap_patterns
 urlpatterns += sitemap_patterns
 

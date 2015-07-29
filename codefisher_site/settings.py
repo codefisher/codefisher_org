@@ -79,6 +79,8 @@ INSTALLED_APPS = (
     'paypal.standard.ipn',
     'djangopress.contact',
     'djangopress.iptools',
+    # other apps
+    'tinymce',
 )
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
@@ -167,3 +169,11 @@ ACCOUNTS_USER_LIMITS = {
         "links": True,
     }
 }
+
+TINYMCE_DEFAULT_CONFIG = {
+    'relative_urls': False,
+    'plugins': "table code image link",
+    'tools': "inserttable",
+
+}
+TINYMCE_JS_URL = "//tinymce.cachefly.net/4.2/tinymce.min.js"
