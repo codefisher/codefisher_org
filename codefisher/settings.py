@@ -154,7 +154,7 @@ TBUTTON_DEFAULT_ICONS = "pastel-svg"
 #TBUTTON_TAGS_DIR = None
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '..', '..', '..', 'codefisher', 'www', 'static'),
+    os.path.join(BASE_DIR, '..', 'www', 'static'),
 )
 
 try:
