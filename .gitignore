@@ -1,7 +1,7 @@
 *.pyc
-codefisher/settings.py
 .project
 .pydevproject
 .idea
 sqlite.db
-codefisher/local_urls.py
+local_urls.py
+local_settings.py

@@ -3,6 +3,8 @@ from djangopress.forum import urls as forum_urls
 from djangopress.accounts import urls as accounts_urls
 from djangopress.blog import urls as blog_urls
 from djangopress.pages import urls as pages_urls
+from djangopress.files import urls as files_urls
+from djangopress.gallery import urls as gallery_urls
 from paypal.standard.ipn import urls as paypal_urls
 from djangopress.donate import urls as donate_urls
 from djangopress.contact import urls as contact_urls
@@ -42,6 +44,8 @@ urlpatterns = patterns('',
     # the cms pages editing tools etc/
     (r'^pages/', include(pages_urls)),
 
+    (r'^gallery/', include(gallery_urls)),
+    (r'^files/', include(files_urls)),
     (r'^paypal/', include(paypal_urls)),
     (r'^donate/', include(donate_urls)),
     (r'^email/', include(contact_urls)),
@@ -84,8 +88,11 @@ except ImportError:
 from djangopress.sitemap import sitemap_patterns
 urlpatterns += sitemap_patterns
 
-from .local_urls import urlpatterns as locale_urls
-urlpatterns = locale_urls + urlpatterns
+try:
+    from .local_urls import urlpatterns as locale_urls
+    urlpatterns = locale_urls + urlpatterns
+except ImportError:
+    pass
 
 from codefisher_apps.downloads.urls import urlpatterns as download_urls
 urlpatterns += download_urls
