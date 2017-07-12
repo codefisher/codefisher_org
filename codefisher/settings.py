@@ -215,7 +215,7 @@ TINYMCE_JS_URL = "/static/js/tinymce/tinymce.min.js"
 MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'codefisher_apps.reverseproxy.middleware.ProxyMiddleware',
+    #'codefisher_apps.reverseproxy.middleware.ProxyMiddleware',
     'djangopress.pages.middleware.PagesMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
