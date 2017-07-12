@@ -23,7 +23,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 
-from local_settings import *
+from .local_settings import *
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'www', 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'www', 'static_files')
@@ -169,9 +169,9 @@ INSTALLED_APPS += (
     'tbutton_web.lbutton',
     'codefisher_apps.downloads',
     'codefisher_apps.extension_downloads',
-    'codefisher_apps.svn_xslt',
+    #'codefisher_apps.svn_xslt',
     'codefisher_apps.favicon_getter',
-    'codefisher_apps.reverseproxy',
+    #'codefisher_apps.reverseproxy',
     'codefisher_apps.online_status',
     'codefisher_apps.site_crawler',
     'codefisher_apps.pastelsvg',

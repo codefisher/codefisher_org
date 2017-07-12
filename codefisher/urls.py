@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url, include
+from django.conf.urls import url, include
 from djangopress.forum import urls as forum_urls
 from djangopress.accounts import urls as accounts_urls
 from djangopress.blog import urls as blog_urls
@@ -29,43 +29,43 @@ def redirect(request, url):
 #from django.contrib import databrowse
 #from django.contrib.auth.decorators import login_required
 
-urlpatterns = patterns('',
+urlpatterns = [
     # the blog system
-    (r'^(?P<blog_slug>[\w\-]+)/blog/', include(blog_urls)),
-    (r'^news/', include(blog_urls), {"blog_slug": "news"}),
+    url(r'^(?P<blog_slug>[\w\-]+)/blog/', include(blog_urls)),
+    url(r'^news/', include(blog_urls), {"blog_slug": "news"}),
     
     # the forum system
-    (r'^(?P<forums_slug>[\w\-]+)/forum/', include(forum_urls)),
-    (r'^forum/', include(forum_urls), {"forums_slug": "codefisher"}),
+    url(r'^(?P<forums_slug>[\w\-]+)/forum/', include(forum_urls)),
+    url(r'^forum/', include(forum_urls), {"forums_slug": "codefisher"}),
     
     # the user accounts system
-    (r'^accounts/', include(accounts_urls)),
+    url(r'^accounts/', include(accounts_urls)),
 
     # the cms pages editing tools etc/
-    (r'^pages/', include(pages_urls)),
+    url(r'^pages/', include(pages_urls)),
 
-    (r'^gallery/', include(gallery_urls)),
-    (r'^files/', include(files_urls)),
-    (r'^paypal/', include(paypal_urls)),
-    (r'^donate/', include(donate_urls)),
-    (r'^email/', include(contact_urls)),
-    (r'^iptools/', include(iptools_urls)),
-    (r'^(?P<url>.*/)[a-z_-]+\.php$', redirect),
-    
-    (r'^xslt_svn/', include(svn_urls)),
-    (r'^ico/', include(favicon_getter_urls)),
-    (r'^pastel-svg/', include(pastelsvg_urls)),
+    url(r'^gallery/', include(gallery_urls)),
+    url(r'^files/', include(files_urls)),
+    url(r'^paypal/', include(paypal_urls)),
+    url(r'^donate/', include(donate_urls)),
+    url(r'^email/', include(contact_urls)),
+    url(r'^iptools/', include(iptools_urls)),
+    url(r'^(?P<url>.*/)[a-z_-]+\.php$', redirect),
+
+    url(r'^xslt_svn/', include(svn_urls)),
+    url(r'^ico/', include(favicon_getter_urls)),
+    url(r'^pastel-svg/', include(pastelsvg_urls)),
     # the Toolbar Buttons section of the site (custom maker etc.)
-    (r'^toolbar_button/request/', include('tbutton_web.tbutton_votes.urls')),
-    (r'^toolbar_button/', include('tbutton_web.tbutton.urls')),
-    (r'^toolbar_button/', include('tbutton_web.tbutton_maker.urls')),
-    (r'^toolbar_button/', include('tbutton_web.lbutton.urls')),
-)
+    url(r'^toolbar_button/request/', include('tbutton_web.tbutton_votes.urls')),
+    url(r'^toolbar_button/', include('tbutton_web.tbutton.urls')),
+    url(r'^toolbar_button/', include('tbutton_web.tbutton_maker.urls')),
+    url(r'^toolbar_button/', include('tbutton_web.lbutton.urls')),
+]
 
 try:
     from djangopress.core.search import ModelSetSearchForm, ModelSetSearchView, search_view_factory
 
-    urlpatterns += patterns('',
+    urlpatterns += [
         # the haystack search
         url(r'^search/', search_view_factory(
                 view_class=ModelSetSearchView,
@@ -73,7 +73,7 @@ try:
                 results_per_page=10,
                 models=["pages.page", "blog.entry"],
             ), name='haystack-search'),
-    )
+    ]
 except ImportError:
     pass
 
