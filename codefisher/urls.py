@@ -64,8 +64,8 @@ urlpatterns = [
 ]
 
 try:
-    from djangopress.core.search import ModelSetSearchForm, ModelSetSearchView, search_view_factory
     if 'haystack' in settings.INSTALLED_APPS:
+        from djangopress.core.search import ModelSetSearchForm, ModelSetSearchView, search_view_factory
         urlpatterns += [
             # the haystack search
             url(r'^search/', search_view_factory(
