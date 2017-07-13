@@ -1,4 +1,5 @@
 from django.conf.urls import url, include
+from django.conf import settings
 from djangopress.forum import urls as forum_urls
 from djangopress.accounts import urls as accounts_urls
 from djangopress.blog import urls as blog_urls
@@ -64,16 +65,16 @@ urlpatterns = [
 
 try:
     from djangopress.core.search import ModelSetSearchForm, ModelSetSearchView, search_view_factory
-
-    urlpatterns += [
-        # the haystack search
-        url(r'^search/', search_view_factory(
-                view_class=ModelSetSearchView,
-                form_class=ModelSetSearchForm,
-                results_per_page=10,
-                models=["pages.page", "blog.entry"],
-            ), name='haystack-search'),
-    ]
+    if 'haystack' in settings.INSTALLED_APPS:
+        urlpatterns += [
+            # the haystack search
+            url(r'^search/', search_view_factory(
+                    view_class=ModelSetSearchView,
+                    form_class=ModelSetSearchForm,
+                    results_per_page=10,
+                    models=["pages.page", "blog.entry"],
+                ), name='haystack-search'),
+        ]
 except ImportError:
     pass
 

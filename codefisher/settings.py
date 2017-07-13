@@ -176,7 +176,7 @@ INSTALLED_APPS += (
     'codefisher_apps.site_crawler',
     'codefisher_apps.pastelsvg',
     'upvotes',
-    'haystack',
+    #'haystack',
     'captcha',
 )
 
