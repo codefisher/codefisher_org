@@ -236,7 +236,5 @@ if not DEBUG:
     # SECURE_CONTENT_TYPE_NOSNIFF = True
     # SECURE_SSL_REDIRECT = True
     RECAPTCHA_USE_SSL = True
-    MIDDLEWARE_CLASSES.insert(3, 'djangosecure.middleware.SecurityMiddleware')
-
     SESSION_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
