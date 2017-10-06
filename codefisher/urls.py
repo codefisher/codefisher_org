@@ -57,7 +57,6 @@ urlpatterns = [
     url(r'^ico/', include(favicon_getter_urls)),
     url(r'^pastel-svg/', include(pastelsvg_urls)),
     # the Toolbar Buttons section of the site (custom maker etc.)
-    url(r'^toolbar_button/request/', include('tbutton_web.tbutton_votes.urls')),
     url(r'^toolbar_button/', include('tbutton_web.tbutton.urls')),
     url(r'^toolbar_button/', include('tbutton_web.tbutton_maker.urls')),
     url(r'^toolbar_button/', include('tbutton_web.lbutton.urls')),
