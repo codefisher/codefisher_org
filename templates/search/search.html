@@ -22,6 +22,10 @@
             <input type="submit" value="Search">
         </div>
      </form>
+    {% if error %}
+        <h3>Error</h3>
+        <p>{{ error }}</p>
+    {%  endif %}
         {% if query %}
         	<div id="search-header">
             <h3>Search results for &#8220;{{ query|escape }}&#8221;</h3>
