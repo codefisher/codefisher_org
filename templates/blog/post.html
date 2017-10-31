@@ -1,0 +1,74 @@
+{% extends "blog/base.html" %}
+{% load field_form %}
+
+{% block head_tags %}
+    {{ block.super }}
+    <meta name="author" content="{{ entry.author }}" />
+    <meta name="description" content="{{ entry.get_description }}" />
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ entry.get_absolute_url }}" />
+    
+    {% if entry.post_image %}
+    
+    {% if entry.author.profile.social_twitter %}
+    <!-- twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ entry.post_image.url }}" />
+    <meta name="twitter:title" content="{{ entry.title }}" />
+    <meta name="twitter:description" content="{{ entry.get_description }}" />
+    <meta name="twitter:site" content="@{{ entry.author.profile.social_twitter.value }}" />
+    <meta name="twitter:url" content="{{ request.scheme }}://{{ request.get_host }}{{ entry.get_absolute_url }}" />
+    {% endif %}
+    
+    <!-- OpenGraph/Facebook -->
+    <meta property="og:title" content="{{ entry.title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ entry.get_absolute_url }}" />
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ entry.post_image.url }}" />
+    <meta property="og:description" content="{{ entry.get_description }}" />
+
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h2><a href="{{ blog.get_absolute_url }}">{{ blog.name }}</a></h2>
+    
+    {% include "blog/entry.html" %}
+
+    <p class="clear">
+        If you found this interesting you might want to <a href="https://twitter.com/codefisher" class="twitter-follow-button" data-show-count="false">Follow @codefisher</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </p>
+
+	{% if blog.comments_enabled %}
+    {% if comment_count == 0 %}
+        <h3>This post has no comments, be the first to post.</h3>
+    {% else %}
+        <h3>This post has {{ comment_count }} comment{{ comment_count|pluralize }} so far.</h3>
+	    <div id="blog-comments">
+	        {% for comment in comments %}
+	           <div class="comment{% if entry.author == comment.user %} author-comment{% endif %}">
+	               <div class="comment-text">{{ comment.formatted_comment }}</div>
+	               <div class="comment-info">
+                         {% if comment.get_user_url %} 
+                         <a rel="nofollow" href="{{comment.get_user_url }}">{{ comment.get_user_name }}</a>
+                         {% else %} {{ comment.get_user_name }}{% endif %} said this on {{ comment.submit_date }}
+                   </div>
+	           </div>
+	        {% endfor %}
+	    </div>
+    {% endif %}
+    {% if comment_message %}
+        <p>{{ comment_message }}</p>
+    {% endif %}
+    {% if entry.comments_open %}
+    <div id="respond">
+        <form action="{{ entry.get_absolute_url }}" method="POST">
+        {% form comment_form %}
+         {% csrf_token %}
+        <div><input type="submit" value="Submit"></div>
+        </form>
+    </div>
+    {% endif %}
+	{% endif %}
+
+{% endblock %}
