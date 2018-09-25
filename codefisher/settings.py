@@ -162,6 +162,8 @@ DEFAULT_LINK_ICONS = os.path.realpath(os.path.join(BASE_DIR, '..', 'www/static/i
 
 GEOLITE2_DATABASE_FILE = os.path.realpath(os.path.join(BASE_DIR, '..', 'db/GeoLite2-City.mmdb'))
 
+CAPTCHA_APP = "snowpenguin.django.recaptcha2"
+
 INSTALLED_APPS += (
     'tbutton_web.tbutton_maker',
     'tbutton_web.tbutton_votes',
@@ -177,7 +179,7 @@ INSTALLED_APPS += (
     'codefisher_apps.pastelsvg',
     'upvotes',
     'haystack',
-    'captcha',
+    CAPTCHA_APP,
 )
 
 SITE_CRAWLER_DICT_LANG = "en"
